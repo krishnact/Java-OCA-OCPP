@@ -113,8 +113,8 @@ public class WebSocketTransmitter implements Transmitter {
     logger.debug("Trying to connect to: {}", resource);
 
     try {
-      client.connectBlocking();
-      closed = false;
+    	boolean open = client.connectBlocking();
+        closed = !open;
     } catch (Exception ex) {
       logger.warn("client.connectBlocking() failed", ex);
     }
